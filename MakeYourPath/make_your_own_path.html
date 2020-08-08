@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Make Your Path</title>
+<style>
+body {background-color:#FFFAF0;}
+.center {
+  
+  margin-top:100px;
+  display: block;
+  margin-left: 600px;
+
+
+}
+span:hover {background-color: #A9A9A9; opacity: 0.3; }
+svg {
+  width: 400px;
+  display: block;
+  position: absolute;
+}
+
+div {
+  width: 50px;
+  height: 50px;
+visibility:hidden;
+   content: url('walking-robot.png');
+  offset-path: path(var(--path));
+  offset-distance: 0%;
+
+  animation: red-ball 2s linear alternate infinite;
+}
+
+@keyframes red-ball {
+  from {
+    offset-distance: 0%;
+  }
+  to {
+    offset-distance: 100%;
+  }
+}
+h2 {font-family:fantasy;}
+.button {width: 230px;}
+.actionButton {Background-color: #B0C4DE; border-color: #B0C4DE; border-radius: 10px;}
+</style>
+
+</head>
+<body class="center">
+<h2>Make Your Own Path</h2>
+<span style="color:white">M = moveto <br>
+L = lineto <br>
+H = horizontal lineto<br>
+V = vertical lineto<br>
+C = curveto<br>
+S = smooth curveto<br>
+Q = quadratic Bézier curve<br>
+T = smooth quadratic Bézier curveto<br>
+A = elliptical Arc<br>
+Z = closepath<br></span>
+<br>
+<input type="text"  class="button" value="M10 10 Q 20 10, 100 80 T 280 100"id="x1"><br>
+
+    <button class="actionButton"type="Submit" onclick="start(),edit();">Submit</button>
+<button class="actionButton" onClick="window.location.reload();">Clear</button> <br>
+
+<svg width="400px" height="600px" version="1.1">
+    <path id="p1" fill="transparent" stroke="#B22222" stroke-width="1" d=""  stroke-dasharray="4"  class="path">
+    <script><![CDATA[ function edit(){
+    
+     var inputVal = document.getElementById("x1").value;
+     
+     
+  var path = document.getElementById('p1');
+  path.setAttribute("d",inputVal); }
+
+
+]]>
+</script>
+</path>
+
+</svg>
+<script> 
+function start(){  var inputVal = document.getElementById("x1").value;
+  document.getElementById("i1").style.setProperty('--path', `"${inputVal}"`);
+
+   document.getElementById("i1").style.visibility = 'visible';
+  }
+</script>
+<div id="i1" ></div>
+</body>
+</html>
+​
